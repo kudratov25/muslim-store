@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
+    // email address
+    'email' => env('MAIL_USERNAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +109,7 @@ return [
 
     'fallback_locale' => 'uz',
 
-    
+
     'all_locales' => [
         'en',
         'ru',

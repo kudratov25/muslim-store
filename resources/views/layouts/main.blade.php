@@ -42,8 +42,11 @@
     <link rel="stylesheet" href="/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="/css/responsive.css">
+    <!-- 404 CSS -->
+    <link rel="stylesheet" href="/css/app.css">
     <!-- Modernizr js -->
     <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+    
 </head>
 
 <body>
@@ -768,8 +771,9 @@
     <script src="/js/scrollUp.min.js"></script>
     <!-- Main/Activator js -->
     <script src="/js/main.js"></script>
-    <!-- Sweetalert-->
-    <script src="/js/sweetalert2.all.min.js"></script>
+    <!-- 404 script-->
+    <script src="/js/app.js"></script>
+
 </body>
 
 <!-- index-431:47-->
