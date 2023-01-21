@@ -6,6 +6,14 @@
     "Blog": "Blog",
     "Pages": "Sahifalar",
     "About Us": "Biz haqimizda",
-    "Contact": "Ma'lumotar"
+    "Contact": "Ma'lumotar",
+    
+    "Electronics":"Elektr mahsulorlari",
+    "TV":"Televizorlar",
+    "Audio":"Ovoz chiqarish qurilmalari",
+    "Personal Computers":"Stol kampyuterlari",
+    "Laptops":"Noutbuklar",
+    "Iron":"Dazmollar",
+    "Soundbars":"Kalonkalar"
 
 }

@@ -1,0 +1,29 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Product_type;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class Product_typeSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Product_type::create([
+            'name' => 'Electronics',
+            'name_uz' => 'Elekt mahsulotlari',
+            'name_ru' => 'Електроника'
+        ]);
+        Product_type::create([
+            'name' => 'Clothes',
+            'name_uz' => 'Kiyimlar',
+            'name_ru' => 'Одежды'
+        ]);
+    }
+}
