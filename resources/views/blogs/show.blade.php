@@ -10,7 +10,6 @@
         <x-nav-status>
             Blog view <li> {{ $blog->title }}</li>
         </x-nav-status>
-        @include('components.alert')
         <!-- Begin Li's Main Blog Page Area -->
         <div class="li-main-blog-page li-main-blog-details-page pt-60 pb-60 pb-sm-45 pb-xs-45">
             <div class="container">

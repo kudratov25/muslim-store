@@ -15,7 +15,7 @@ class AuthenticatedSessionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['throttle:global', ]);
+        $this->middleware(['throttle:global']);
     }
     /**
      * Display the login view.
@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME)->with('toast_success', 'Login successful');
     }
 
     /**
@@ -48,6 +48,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'You have logout');
+        return redirect('/')->with('toast_warning', 'You have logout');
     }
 }

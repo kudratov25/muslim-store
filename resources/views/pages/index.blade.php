@@ -1,6 +1,5 @@
 <x-main-layout>
 
-    @include('components.alert')
 <!-- Begin Slider With Banner Area -->
 <div class="slider-with-banner">
     <div class="container">

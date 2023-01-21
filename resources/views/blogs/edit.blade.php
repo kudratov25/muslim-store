@@ -8,7 +8,7 @@
             }
         </style>
         <x-nav-status>
-            Blog edit > Edit <span class="text-warning font-weight-bold"> {{ $blog->title }}</span>
+            Blog edit / Edit > "{{ $blog->title }}"
         </x-nav-status>
         <div class="page-section mt-60 mb-60">
             <div class="container">
@@ -87,9 +87,11 @@
                                         @enderror
                                     </div>
                                     <div class="col-12">
-                                        <a href="{{ route('blogs.show', ['blog' => $blog->id]) }}">
+                                        {{-- <a href="{{ route('blogs.show', ['blog' => $blog->id]) }}">
                                             <button class="btn btn-outline-danger px-5 mt-0">Cancel</button>
-                                        </a>
+                                        </a> --}}
+                                        {{-- <a class="btn btn-default btn-close" href="{{ route('home') }}">Cancel</a> --}}
+                                        <a href="{{url()->previous()}}" class="btn btn-default btn-close px-5 mt-0">Cancel</a>
                                         <button type="submit"
                                             class="btn btn-primary px-5 mt-0 float-right">Update</button>
                                     </div>

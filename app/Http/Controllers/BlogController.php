@@ -23,7 +23,6 @@ class BlogController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-        $this->middleware('password.confirm')->only('destroy');
         $this->authorizeResource(Blog::class, 'blog');
     }
 
@@ -37,6 +36,7 @@ class BlogController extends Controller
         $blogs = Blog::orderBy('id', 'desc')->paginate(6);
 
         // $blogs = Blog::latest()->paginate(4);
+       
         // $blogs = DB::table('blogs')->orderBy('id', 'desc')->paginate(8);=============this way u cannt use reletionship in model class
         return view('blogs.index', [
             'blogs' => $blogs,
@@ -87,7 +87,7 @@ class BlogController extends Controller
         // Mail::to($request->user()->email)->send(new BlogCreated($blog, $request));
         // Notification::send(auth()->user(), new NotificationsBlogCreated($blog));
         // auth()->user()->notify(new NotificationsBlogCreated($blog));
-        return redirect()->route('blogs.index')->with('success', 'Muvaffaqiyatli yaratildi');
+        return redirect()->route('blogs.index')->with('toast_success', 'Muvaffaqiyatli yaratildi');
     }
 
     /**
@@ -183,6 +183,6 @@ class BlogController extends Controller
             Storage::delete($blog->image);
         }
         $blog->delete();
-        return redirect()->route('blogs.index')->with('success', 'Deleted');
+        return redirect()->route('blogs.index')->with('success', 'Successfully deleted');
     }
 }

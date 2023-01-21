@@ -10,7 +10,6 @@
         <x-nav-status>
             Blog list
         </x-nav-status>
-        @include('components.alert')
         <!-- Begin Li's Main Blog Page Area -->
         <div class="li-main-blog-page pt-60 pb-55">
             <div class="container">

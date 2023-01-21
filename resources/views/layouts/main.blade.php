@@ -595,7 +595,7 @@
 
 
         <!-- Begin Quick View | Modal Area -->
-        {{-- <div class="modal fade modal-wrapper" id="exampleModalCenter">
+        <div class="modal fade modal-wrapper" id="exampleModalCenter">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -722,7 +722,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <!-- Quick View | Modal Area End Here -->
 
 
@@ -773,6 +773,9 @@
     <script src="/js/main.js"></script>
     <!-- 404 script-->
     <script src="/js/app.js"></script>
+
+    @include('sweetalert::alert')
+
 
 </body>
 
