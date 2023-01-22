@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product_type;
-use App\Models\Product_type_item;
+use App\Models\Admin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Product_type_itemSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +15,8 @@ class Product_type_itemSeeder extends Seeder
      */
     public function run()
     {
-        Product_type_item::factory(5)->create();      
+        Admin::create([
+            'name'=>'Foydalanuvchi'
+        ]);
     }
 }

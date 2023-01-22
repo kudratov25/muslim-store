@@ -18,7 +18,7 @@ class Product_type_itemFactory extends Factory
     {
         return [
             'product_type_id'=>rand(1,2),
-            'name'=> 'Samsung'
+            'name'=> fake()->word()
         ];
     }
 }

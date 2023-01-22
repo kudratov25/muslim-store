@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product_type;
-use App\Models\Product_type_item;
+use App\Models\Color;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Product_type_itemSeeder extends Seeder
+class ColorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +15,8 @@ class Product_type_itemSeeder extends Seeder
      */
     public function run()
     {
-        Product_type_item::factory(5)->create();      
+        Color::create([
+            'name'=>'red'
+        ]);
     }
 }
