@@ -19,14 +19,14 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             BlogSeeder::class,
-            CommentSeeder::class,
             TagSeeder::class,
             Product_typeSeeder::class,
             Product_type_itemSeeder::class,
             AdminSeeder::class,
             ColorSeeder::class,
             RateSeeder::class,
-            ProductSeeder::class
+            ProductSeeder::class,
+            CommentSeeder::class,
 
         ]);
     }

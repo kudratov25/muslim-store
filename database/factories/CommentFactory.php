@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Blog;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +21,8 @@ class CommentFactory extends Factory
     {
         return [
             'user_id'=>User::factory(),
-            'blog_id'=>Blog::factory(),
+            'rate_id'=>rand(1,5),
+            'product_id'=>rand(1, 10),
             'content'=>fake()->sentences($nb = 3, $asText =true),
         ];
     }

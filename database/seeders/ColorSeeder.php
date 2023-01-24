@@ -16,7 +16,9 @@ class ColorSeeder extends Seeder
     public function run()
     {
         Color::create([
-            'name'=>'red'
+            'name_en'=>'red',
+            'name_uz'=>'qizil',
+            'name_ru'=>'Красний'
         ]);
     }
 }

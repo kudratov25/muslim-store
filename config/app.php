@@ -215,6 +215,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // menu provider
+        App\Providers\MenuProvider::class,
+
     ],
 
     /*

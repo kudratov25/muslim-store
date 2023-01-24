@@ -16,12 +16,12 @@ class Product_typeSeeder extends Seeder
     public function run()
     {
         Product_type::create([
-            'name' => 'Electronics',
+            'name_en' => 'Electronics',
             'name_uz' => 'Elekt mahsulotlari',
             'name_ru' => 'Електроника'
         ]);
         Product_type::create([
-            'name' => 'Clothes',
+            'name_en' => 'Clothes',
             'name_uz' => 'Kiyimlar',
             'name_ru' => 'Одежды'
         ]);

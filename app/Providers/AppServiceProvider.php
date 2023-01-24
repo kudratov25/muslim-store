@@ -32,10 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         View::composer('layouts.main', function ($view){
             $view->with('current_locale', App::currentLocale());
-            $view->with('all_locales', ['uz', 'en', 'ru']);
-        });
-        View::composer('components.navbar', function($view){
-            $view->with('navbar_menu', Product_type::all()->load('product_type_items'));
+            $view->with('all_locales', config('app.all_locales'));
         });
     }
 }

@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <!-- Modernizr js -->
     <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
-    
+
 </head>
 
 <body>
@@ -78,7 +78,7 @@
                                                 @auth
                                                     {{ auth()->user()->name }}
                                                 @else
-                                                   {{__('Account')}}
+                                                    {{ __('Account') }}
                                                 @endauth
                                             </span></div>
                                         <div class="setting ht-setting">
@@ -118,31 +118,27 @@
                                     <!-- Currency Area End Here -->
                                     <!-- Begin Language Area -->
                                     <li>
-                                        <div class="ht-language-trigger"><span>
-                                                @if ($current_locale == 'uz')
-                                                    O'zbekcha
-                                                @elseif ($current_locale == 'en')
-                                                    English
-                                                @elseif ($current_locale == 'ru')
-                                                    Русский
-                                                @endif
-                                            </span></div>
+                                        <div class="ht-language-trigger">
+                                            <span>
+                                                {{ strtoupper(app()->getLocale()) }}
+                                            </span>
+                                        </div>
                                         <div class="language ht-language">
-
                                             <ul class="ht-setting-list">
                                                 @foreach ($all_locales as $locale)
                                                     @if ($locale == $current_locale)
                                                         <li class="active">
-                                                            <a>{{ $locale }}</a>
+                                                            <a>{{ strtoupper($locale) }}</a>
                                                         </li>
                                                     @else
                                                         <li class="danger">
                                                             <a
-                                                                href="{{ route('locale.change', ['locale' => $locale]) }}">{{ $locale }}</a>
+                                                                href="{{ route('locale.change', ['locale' => $locale]) }}">
+                                                                {{ strtoupper($locale) }}
+                                                            </a>
                                                         </li>
                                                     @endif
                                                 @endforeach
-
                                             </ul>
                                         </div>
                                     </li>
@@ -592,6 +588,27 @@
         </div>
         <!-- Footer Area End Here -->
 
+
+        <div id="quickViewModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h1 id="modal-product-name"></h1>
+                        <h1 id="modal-product-id"></h1>
+                        <img id="modal-product-image" src="">
+                        <p id="modal-product-price"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Begin Quick View | Modal Area -->

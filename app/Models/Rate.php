@@ -11,4 +11,8 @@ class Rate extends Model
     protected $fillable =[
         'star'
     ];
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

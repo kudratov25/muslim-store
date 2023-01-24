@@ -15,8 +15,14 @@ class RateSeeder extends Seeder
      */
     public function run()
     {
-       Rate::create([
-        'star'=>'5'
-       ]);
+        $data = [
+            ['star' => '1'],
+            ['star' => '2'],
+            ['star' => '3'],
+            ['star' => '4'],
+            ['star' => '5'],
+        ];
+        Rate::insert($data);
+       
     }
 }

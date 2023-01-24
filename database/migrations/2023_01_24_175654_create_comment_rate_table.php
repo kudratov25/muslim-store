@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('colors', function (Blueprint $table) {
+        Schema::create('comment_rate', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
-            $table->string('name_uz');
-            $table->string('name_ru');
+            $table->foreignId('comment_id')->constrained()->onDelete('cascade');
+            $table->foreignId('rate_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colors');
+        Schema::dropIfExists('comment_rate');
     }
 };

@@ -8,23 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'admin_id',
-        'sub_category_id',
-        'color_id',
-        'rate_id',
-        'image',
-        'name',
-        'name_uz',
-        'name_ru',
-        'short_text',
-        'short_text_uz',
-        'short_text_ru',
-        'text',
-        'text_uz',
-        'text_ru',
-        'quantity',
-        'price',
-        'size'
+    protected $guarded = [
+        'id'
     ];
+    public function admins()
+    {
+        return $this->belongsTo(Admin::class);
+    }
+    public function color()
+    {
+        return $this->belongsTo(Color::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function product_type_items()
+    {
+        return $this->belongsTo(Product_type_item::class);
+    }
 }

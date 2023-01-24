@@ -4,12 +4,12 @@
         <li class="megamenu-holder"><a href="shop-left-sidebar.html">{{ __('Shop') }}</a>
             <ul class="megamenu hb-megamenu">
                 @foreach ($navbar_menu as $item)
-                    <li><a href="shop-left-sidebar.html"> {{ $item->name }}
-                        </a>
+                    <li>
+                        <a href=""> {{ $item->{'name_' . app()->getLocale()} }}</a>
                         @if ($item->product_type_items->count())
                             <ul>
                                 @foreach ($item->product_type_items as $subitem)
-                                    <li><a href="">{{ $subitem->name }}</a></li>
+                                    <li><a href="">{{ $subitem->{'name_' . app()->getLocale()} }}</a></li>
                                 @endforeach
                             </ul>
                         @endif
