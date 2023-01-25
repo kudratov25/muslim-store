@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
@@ -55,6 +56,7 @@ Route::middleware('auth', 'password.confirm', 'verified')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('product/{menu?}/{submenu?}', [ProductController::class, 'product'])->name('product');
 
 
 require __DIR__ . '/auth.php';

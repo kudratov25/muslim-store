@@ -588,7 +588,7 @@
         </div>
         <!-- Footer Area End Here -->
 
-
+{{-- 
         <div id="quickViewModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -608,11 +608,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
         <!-- Begin Quick View | Modal Area -->
-        <div class="modal fade modal-wrapper" id="exampleModalCenter">
+        <div class="modal fade modal-wrapper" id="quickViewModal">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -664,8 +664,9 @@
                             <div class="col-lg-7 col-md-6 col-sm-6">
                                 <div class="product-details-view-content pt-60">
                                     <div class="product-info">
-                                        <h2>Today is a good day Framed poster</h2>
-                                        <span class="product-details-ref">Reference: demo_15</span>
+                                        <h2 id="modal-product-name"></h2>
+                                        {{-- <h2 id="modal-product-category"></h2> --}}
+                                        <span class="product-details-ref">{{__('Category')}}: <span  id="modal-product-category" class="text-primary"></span> </span>
                                         <div class="rating-box pt-20">
                                             <ul class="rating rating-with-review-item">
                                                 <li><i class="fa fa-star-o"></i></li>
@@ -673,23 +674,20 @@
                                                 <li><i class="fa fa-star-o"></i></li>
                                                 <li class="no-star"><i class="fa fa-star-o"></i></li>
                                                 <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                <li class="review-item"><a href="#">Read Review</a></li>
-                                                <li class="review-item"><a href="#">Write Review</a></li>
+                                                {{-- <li class="review-item"><a href="#">Read Review</a></li>
+                                                <li class="review-item"><a href="#">Write Review</a></li> --}}
                                             </ul>
                                         </div>
                                         <div class="price-box pt-20">
-                                            <span class="new-price new-price-2">$57.98</span>
+                                            <span id="modal-product-price" class="new-price new-price-2">$57.98</span>
                                         </div>
                                         <div class="product-desc">
                                             <p>
-                                                <span>100% cotton double printed dress. Black and white striped top and
-                                                    orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. quibusdam corporis, earum facilis et
-                                                    nostrum dolorum accusamus similique eveniet quia pariatur.
+                                                <span id="modal-product-text">
                                                 </span>
                                             </p>
                                         </div>
-                                        <div class="product-variants">
+                                        {{-- <div class="product-variants">
                                             <div class="produt-variants-size">
                                                 <label>Dimension</label>
                                                 <select class="nice-select">
@@ -699,8 +697,8 @@
                                                     <option value="3" title="L">80x120cm</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="single-add-to-cart">
+                                        </div> --}}
+                                        {{-- <div class="single-add-to-cart">
                                             <form action="#" class="cart-quantity">
                                                 <div class="quantity">
                                                     <label>Quantity</label>
@@ -715,10 +713,10 @@
                                                 </div>
                                                 <button class="add-to-cart" type="submit">Add to cart</button>
                                             </form>
-                                        </div>
+                                        </div> --}}
                                         <div class="product-additional-info pt-25">
                                             <a class="wishlist-btn" href="wishlist.html"><i
-                                                    class="fa fa-heart-o"></i>Add to wishlist</a>
+                                                    class="fa fa-heart-o"></i>{{__('Add to wishlist')}}</a>
                                             <div class="product-social-sharing pt-25">
                                                 <ul>
                                                     <li class="facebook"><a href="#"><i

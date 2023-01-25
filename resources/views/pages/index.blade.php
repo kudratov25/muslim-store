@@ -153,16 +153,18 @@
                                                     <li class="add-cart active"><a href="#">Add to cart</a></li>
                                                     <li><a class="links-details" href="single-product.html"><i
                                                                 class="fa fa-heart-o"></i></a></li>
-                                                    <li><a class="quick-view" data-toggle="modal"
-                                                            data-target="#exampleModalCenter"><i
-                                                                class="fa fa-eye"></i></a></li>
-                                                    <a data-toggle="modal" data-target="#quickViewModal"
-                                                        class="btn btn-primary btnQuickView"
-                                                        data-product-id="{{ $product->rates }}"
-                                                        data-product-name="{{ $product->{'name_' . app()->getLocale()} }}"
-                                                        data-product-name="{{ $product->{'category_' . app()->getLocale()} }}"
-                                                        data-product-img="{{ $product->image }}" {{-- data-product-img="{{$product->rates->star}}" --}}
-                                                        data-product-price="{{ $product->price }}">Quick View</a>
+                                                    {{ $product->product_type_items->name }}
+                                                    <li>
+                                                        <a href="" class="btnQuickView" data-toggle="modal"
+                                                            data-target="#quickViewModal"
+                                                            data-product-id="{{ $product->id }}"
+                                                            data-product-name="{{ $product->{'name_' . app()->getLocale()} }}"
+                                                            data-product-category="{{ $product->product_type_items->{'name_' . app()->getLocale()} }}"
+                                                            data-product-img="{{ $product->image }}"
+                                                            data-product-text="{{ $product->{'text_' . app()->getLocale()} }}"
+                                                            data-product-price="{{ '$' . $product->price }}"><i
+                                                                class="fa fa-eye"></i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -178,8 +180,8 @@
                                                 $('#quickViewModal #modal-product-name').html(data.productName);
                                                 $('#quickViewModal #modal-product-category').html(data.productCategory);
                                                 $('#quickViewModal #modal-product-rate').html(data.productRate);
-                                                $('#quickViewModal #modal-product-rate').html(data.productRate);
                                                 $('#quickViewModal #modal-product-img').attr('src', data.productImage);
+                                                $('#quickViewModal #modal-product-text').html(data.productText);
                                                 $('#quickViewModal #modal-product-price').html(data.productPrice);
 
                                                 $('#quickViewModal').modal();
