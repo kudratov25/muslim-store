@@ -18,12 +18,14 @@ class Product_typeSeeder extends Seeder
         Product_type::create([
             'name_en' => 'Electronics',
             'name_uz' => 'Elekt mahsulotlari',
-            'name_ru' => 'Електроника'
+            'name_ru' => 'Електроника',
+            'url'=>'electronics'
         ]);
         Product_type::create([
             'name_en' => 'Clothes',
             'name_uz' => 'Kiyimlar',
-            'name_ru' => 'Одежды'
+            'name_ru' => 'Одежды',
+            'url'=>'clothes'
         ]);
     }
 }

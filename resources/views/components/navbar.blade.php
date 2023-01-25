@@ -1,15 +1,15 @@
 <nav>
     <ul>
         <li><a href="{{ route('home') }}">{{ __('Home') }}</a> </li>
-        <li class="megamenu-holder"><a href="shop-left-sidebar.html">{{ __('Shop') }}</a>
+        <li class="megamenu-holder"><a>{{ __('Shop') }}</a>
             <ul class="megamenu hb-megamenu">
                 @foreach ($navbar_menu as $menu)
                     <li>
-                        <a href="{{route('product', ['menu'=> $menu->{'name_' . app()->getLocale()}]) }}"> {{ $menu->{'name_' . app()->getLocale()} }}</a>
+                        <a href="{{route('product', ['menu'=> $menu->url]) }}"> {{ $menu->{'name_' . app()->getLocale()} }}</a>
                         @if ($menu->product_type_items->count())
                             <ul>
                                 @foreach ($menu->product_type_items as $submenu)
-                                    <li><a href="{{ route('product', ['menu' =>$menu->{'name_' . app()->getLocale()}, 'submenu'=>$submenu->{'name_' . app()->getLocale()}]) }}">
+                                    <li><a href="{{ route('product', ['menu' =>$menu->url, 'id'=>$submenu->id, 'submenu'=>$submenu->{'name_' . app()->getLocale()}]) }}">
                                             {{ $submenu->{'name_' . app()->getLocale()} }}</a>
                                     </li>
                                 @endforeach

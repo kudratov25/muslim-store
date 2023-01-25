@@ -15,7 +15,7 @@ class Product extends Model
     {
         return $this->belongsTo(Admin::class);
     }
-    public function color()
+    public function colors()
     {
         return $this->belongsTo(Color::class);
     }

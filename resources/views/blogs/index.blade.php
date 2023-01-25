@@ -50,7 +50,7 @@
                                         <div class="li-blog-banner">
                                             <a href="{{ route('blogs.show', ['blog' => $blog->id]) }}"><img
                                                     class="img-full" src="{{ asset('storage/' . $blog->image) }}"
-                                                    alt=""></a>
+                                                    alt="{{$blog->image}}"></a>
                                         </div>
                                         <div class="li-blog-content">
                                             <div class="li-blog-details">

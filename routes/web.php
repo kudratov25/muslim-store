@@ -56,7 +56,7 @@ Route::middleware('auth', 'password.confirm', 'verified')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('product/{menu?}/{submenu?}', [ProductController::class, 'product'])->name('product');
+Route::get('/products/{menu}/{id?}/{submenu?}', [ProductController::class, 'product'])->name('product');
 
 
 require __DIR__ . '/auth.php';

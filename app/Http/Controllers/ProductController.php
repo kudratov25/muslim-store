@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Product_type_item;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,10 +14,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function product($menu, $submenu)
+    public function product($menu, $id, $submenu = null)
     {
-        dd($menu, $submenu);
-        return view('pages.product')->with('category', $menu);
+
+        if (!$menu = null) {
+            $products = Product::where('product_type_items_id', $id)->paginate(20);
+            return view('pages.product')->with('products', $products);
+        }
+        abort(404);
     }
 
     /**
