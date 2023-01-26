@@ -161,7 +161,7 @@
                                                             data-product-name="{{ $product->{'name_' . app()->getLocale()} }}"
                                                             data-product-category="{{ $product->product_type_items->{'name_' . app()->getLocale()} }}"
                                                             data-product-img="{{ $product->image }}"
-                                                            data-product-text="{{ $product->{'text_' . app()->getLocale()} }}"
+                                                            data-product-short-text="{{ $product->{'short_text_' . app()->getLocale()} }}"
                                                             data-product-price="{{ '$' . $product->price }}"><i
                                                                 class="fa fa-eye"></i></a>
                                                     </li>
@@ -169,26 +169,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Load jQuery library -->
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $('body').on('click', '.btnQuickView', function(e) {
-                                                e.preventDefault();
-                                                var data = $(this).data();
-                                                $('#quickViewModal #modal-product-id').html(data.productId);
-                                                $('#quickViewModal #modal-product-name').html(data.productName);
-                                                $('#quickViewModal #modal-product-category').html(data.productCategory);
-                                                $('#quickViewModal #modal-product-rate').html(data.productRate);
-                                                $('#quickViewModal #modal-product-img').attr('src', data.productImage);
-                                                $('#quickViewModal #modal-product-text').html(data.productText);
-                                                $('#quickViewModal #modal-product-price').html(data.productPrice);
-
-                                                $('#quickViewModal').modal();
-                                            });
-                                        });
-                                    </script>
-
                                     <!-- single-product-wrap end -->
                                 </div>
                             @endforeach
@@ -1756,3 +1736,23 @@
     </div>
     <!-- Group Featured Product Area End Here -->
 </x-main-layout>
+
+
+<!-- Load jQuery library -->
+<script type="text/javascript">
+    $(function() {
+        $('body').on('click', '.btnQuickView', function(e) {
+            e.preventDefault();
+            var data = $(this).data();
+            $('#quickViewModal #modal-product-id').html(data.productId);
+            $('#quickViewModal #modal-product-name').html(data.productName);
+            $('#quickViewModal #modal-product-category').html(data.productCategory);
+            $('#quickViewModal #modal-product-rate').html(data.productRate);
+            $('#quickViewModal #modal-product-img').attr('src', data.productImage);
+            $('#quickViewModal #modal-product-short-text').html(data.productShortText);
+            $('#quickViewModal #modal-product-price').html(data.productPrice);
+
+            $('#quickViewModal').modal();
+        });
+    });
+</script>

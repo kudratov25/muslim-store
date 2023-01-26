@@ -683,7 +683,7 @@
                                         </div>
                                         <div class="product-desc">
                                             <p>
-                                                <span id="modal-product-text">
+                                                <span id="modal-product-short-text">
                                                 </span>
                                             </p>
                                         </div>

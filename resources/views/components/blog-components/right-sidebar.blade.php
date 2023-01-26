@@ -20,17 +20,6 @@
             </ul>
         </div>
         <div class="li-blog-sidebar">
-            <h4 class="li-blog-sidebar-title">Blog Archives</h4>
-            <ul class="li-blog-archive">
-                <li><a href="#">January (10)</a></li>
-                <li><a href="#">February (08)</a></li>
-                <li><a href="#">March (07)</a></li>
-                <li><a href="#">April (14)</a></li>
-                <li><a href="#">May (10)</a></li>
-                <li><a href="#">June (06)</a></li>
-            </ul>
-        </div>
-        <div class="li-blog-sidebar">
 
             {{ $slot }}
 

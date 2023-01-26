@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('admin_id')->nullable()->constrained(); 
             $table->foreignId('product_type_items_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('color_id')->nullable()->constrained()->onDelete('cascade');
-            $table->string('image')->nullable();
             $table->text('name_en');
             $table->text('name_uz');
             $table->text('name_ru');
@@ -28,6 +27,7 @@ return new class extends Migration
             $table->text('text_en');
             $table->text('text_uz');
             $table->text('text_ru');
+            $table->string('image')->nullable();
             $table->bigInteger('quantity');
             $table->bigInteger('price');
             $table->string('size')->nullable();

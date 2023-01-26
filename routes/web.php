@@ -27,7 +27,8 @@ Route::middleware(['throttle:global'])->group(function () {
     Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
     Route::resources([
         'comments' => CommentController::class,
-        'blogs' => BlogController::class
+        'blogs' => BlogController::class,
+        'product'=> ProductController::class
     ]);
 });
 Route::get('/email/verify', function () {

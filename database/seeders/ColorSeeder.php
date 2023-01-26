@@ -20,5 +20,10 @@ class ColorSeeder extends Seeder
             'name_uz'=>'qizil',
             'name_ru'=>'Красний'
         ]);
+        Color::create([
+            'name_en'=>'green',
+            'name_uz'=>'yashil',
+            'name_ru'=>'Зелений'
+        ]);
     }
 }

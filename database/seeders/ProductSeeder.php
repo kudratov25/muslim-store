@@ -19,8 +19,6 @@ class ProductSeeder extends Seeder
       Product::create([
         'admin_id'=>1,
         'product_type_items_id'=>rand(1,5),
-        'color_id'=>1,
-        // 'rate_id'=>1,
         // 'image',
         'name_en'=>'Samsung A52',
         'name_uz'=>'Samsung A52 uzbek tilida',
@@ -38,8 +36,6 @@ class ProductSeeder extends Seeder
       Product::create([
         'admin_id'=>1,
         'product_type_items_id'=>rand(1,5),
-        'color_id'=>1,
-        // 'rate_id'=>3,
         // 'image',
         'name_en'=>'Iphone XS Max',
         'name_uz'=>'Iphone XS Max uzbek tilida',

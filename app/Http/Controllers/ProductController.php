@@ -17,10 +17,12 @@ class ProductController extends Controller
     public function product($menu, $id, $submenu = null)
     {
 
-        if (!$menu = null) {
-            $products = Product::where('product_type_items_id', $id)->paginate(20);
-            return view('pages.product')->with('products', $products);
-        }
+            $products = Product::where('product_type_items_id', $id)->paginate(3);
+            return view('pages.product')->with([
+                'products'=> $products,
+                'menu'=> $menu,
+                'submenu'=> $submenu
+            ]);
         abort(404);
     }
 
@@ -51,9 +53,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, Product $product)
     {
-        //
+        return view('pages.show', [
+            'product' => $product,
+            'menu' =>$request->menu,
+            'submenu' => $request->submenu
+            // 'similar_products' => product::orderBy('id', 'desc')->get()->except($product->id)->take(3),
+            
+        ]);
     }
 
     /**
