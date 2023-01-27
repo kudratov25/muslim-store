@@ -588,29 +588,6 @@
         </div>
         <!-- Footer Area End Here -->
 
-{{-- 
-        <div id="quickViewModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Title</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h1 id="modal-product-name"></h1>
-                        <h1 id="modal-product-id"></h1>
-                        <img id="modal-product-image" src="">
-                        <p id="modal-product-price"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
-
         <!-- Begin Quick View | Modal Area -->
         <div class="modal fade modal-wrapper" id="quickViewModal">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -666,7 +643,8 @@
                                     <div class="product-info">
                                         <h2 id="modal-product-name"></h2>
                                         {{-- <h2 id="modal-product-category"></h2> --}}
-                                        <span class="product-details-ref">{{__('Category')}}: <span  id="modal-product-category" class="text-primary"></span> </span>
+                                        <span class="product-details-ref">{{ __('Category') }}: <span
+                                                id="modal-product-category" class="text-primary"></span> </span>
                                         <div class="rating-box pt-20">
                                             <ul class="rating rating-with-review-item">
                                                 <li><i class="fa fa-star-o"></i></li>
@@ -698,25 +676,33 @@
                                                 </select>
                                             </div>
                                         </div> --}}
-                                        {{-- <div class="single-add-to-cart">
-                                            <form action="#" class="cart-quantity">
+                                        <div class="single-add-to-cart">
+                                            <form action="{{ route('order.store') }}" method="POST"
+                                                class="cart-quantity">
+                                                @csrf
                                                 <div class="quantity">
-                                                    <label>Quantity</label>
+                                                    <label>{{ __('Quantity') }}</label>
+                                                    <input type="hidden" name="id" id="modal-product-id">
                                                     <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="1"
-                                                            type="text">
-                                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i>
-                                                        </div>
-                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i>
-                                                        </div>
+                                                        <input class="cart-plus-minus-box" name="quantity"
+                                                            id="modal-product-max" value="1" type="number">
                                                     </div>
                                                 </div>
                                                 <button class="add-to-cart" type="submit">Add to cart</button>
                                             </form>
-                                        </div> --}}
+                                        </div>
                                         <div class="product-additional-info pt-25">
-                                            <a class="wishlist-btn" href="wishlist.html"><i
-                                                    class="fa fa-heart-o"></i>{{__('Add to wishlist')}}</a>
+                                            <form action="{{ route('wishlist.store') }}" method="post"
+                                                id="myform_id">
+                                                @csrf
+                                                <input name="id" type="hidden" id="modal-product-id">
+
+                                                <button type="submit" class="btn btn-outline-warning "><i
+                                                        class="fa fa-heart-o"></i>
+                                                    {{ __('Add to wishlist') }}</button>
+
+                                            </form>
+
                                             <div class="product-social-sharing pt-25">
                                                 <ul>
                                                     <li class="facebook"><a href="#"><i

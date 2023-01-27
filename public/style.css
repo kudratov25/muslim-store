@@ -1190,6 +1190,17 @@ textarea:focus {
 	width: 3rem;
 	background: #fff;
 }
+/* Chrome, Safari, Edge, Opera */
+.cart-plus-minus input::-webkit-outer-spin-button,
+.cart-plus-minus input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.cart-plus-minus input[type=number] {
+  -moz-appearance: textfield;
+}
 .cart-plus-minus .dec.qtybutton, .cart-plus-minus .inc.qtybutton {
   border-bottom: 1px solid #e1e1e1;
   border-right: 1px solid #e1e1e1;

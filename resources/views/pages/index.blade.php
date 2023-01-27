@@ -139,7 +139,7 @@
                                                     </div>
                                                 </div>
                                                 <h4><a class="product_name"
-                                                        href="single-product.html">{{ $product->{'name_' . app()->getLocale()} }}</a>
+                                                        href="{{ route('product.show', ['product' => $product->id]) }}">{{ $product->{'name_' . app()->getLocale()} }}</a>
                                                 </h4>
                                                 <div class="price-box">
                                                     <span
@@ -150,9 +150,29 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a href="#">Add to cart</a></li>
-                                                    <li><a class="links-details" href="single-product.html"><i
-                                                                class="fa fa-heart-o"></i></a></li>
+                                                    <li class="add-cart active">
+                                                        <form action="{{ route('order.store') }}" id="add-cart"
+                                                            method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="quantity" value="1">
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $product->id }}">
+                                                            <a onclick="document.getElementById('add-cart').submit();"
+                                                                class="links-details" style="cursor: pointer">Add to
+                                                                cart</a>
+                                                        </form>
+                                                    </li>
+                                                    <li>
+                                                        <form action="{{ route('wishlist.store') }}" method="post"
+                                                            id="myform_id">
+                                                            @csrf
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $product->id }}">
+                                                            <a onclick="document.getElementById('myform_id').submit();"
+                                                                class="links-details" style="cursor: pointer"><i
+                                                                    class="fa fa-heart-o"></i></a>
+                                                        </form>
+                                                    </li>
                                                     {{ $product->product_type_items->name }}
                                                     <li>
                                                         <a href="" class="btnQuickView" data-toggle="modal"
@@ -161,6 +181,7 @@
                                                             data-product-name="{{ $product->{'name_' . app()->getLocale()} }}"
                                                             data-product-category="{{ $product->product_type_items->{'name_' . app()->getLocale()} }}"
                                                             data-product-img="{{ $product->image }}"
+                                                            data-product-max="{{ $product->quantity }}"
                                                             data-product-short-text="{{ $product->{'short_text_' . app()->getLocale()} }}"
                                                             data-product-price="{{ '$' . $product->price }}"><i
                                                                 class="fa fa-eye"></i></a>
@@ -1744,11 +1765,12 @@
         $('body').on('click', '.btnQuickView', function(e) {
             e.preventDefault();
             var data = $(this).data();
-            $('#quickViewModal #modal-product-id').html(data.productId);
+            $('#quickViewModal #modal-product-id').val(data.productId);
             $('#quickViewModal #modal-product-name').html(data.productName);
             $('#quickViewModal #modal-product-category').html(data.productCategory);
             $('#quickViewModal #modal-product-rate').html(data.productRate);
             $('#quickViewModal #modal-product-img').attr('src', data.productImage);
+            $('#quickViewModal #modal-product-max').attr('max', data.productMax);
             $('#quickViewModal #modal-product-short-text').html(data.productShortText);
             $('#quickViewModal #modal-product-price').html(data.productPrice);
 

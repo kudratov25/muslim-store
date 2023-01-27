@@ -19,8 +19,11 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'name',
+        'photo',
         'email',
         'password',
+        'phone',
+        'address'
     ];
 
     /**
@@ -50,5 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

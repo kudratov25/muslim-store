@@ -1,7 +1,10 @@
 <x-main-layout>
     <x-slot:title>
-        {{ config('app.name') . '/' . $menu . '/' . $submenu . '/' . $product->{'name_' . app()->getLocale()} }}
-        {{-- {{ __('Product') . '/' . $product->{'name_' . app()->getLocale()} }} --}}
+        @if ($menu && $submenu)
+            {{ config('app.name') . '/' . $menu . '/' . $submenu . '/' . $product->{'name_' . app()->getLocale()} }}
+        @else
+            {{ config('app.name') . '/' . $product->{'name_' . app()->getLocale()} }}
+        @endif
         </x-slot>
         <style>
             .header-bottom {
@@ -9,9 +12,16 @@
             }
         </style>
         <x-nav-status>
-            {{ $menu }}
-            <li>{{ $submenu }}</li>
-            <li> {{ $product->{'name_' . app()->getLocale()} }}</li>
+            @if (isset($menu))
+                {{ $menu }}
+                @if (isset($submenu))
+                    <li>{{ $submenu }}</li>
+                    <li> {{ $product->{'name_' . app()->getLocale()} }}</li>
+                @endif
+            @else
+                {{ $product->{'name_' . app()->getLocale()} }}
+            @endif
+
         </x-nav-status>
 
 
@@ -120,7 +130,7 @@
                                     </div>
                                 @endif
 
-                                <div class="product-variants">
+                                {{-- <div class="product-variants">
                                     <div class="produt-variants-size">
                                         <label>Dimension</label>
                                         <select class="nice-select">
@@ -129,14 +139,19 @@
                                             <option value="3" title="L">80x120cm</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="single-add-to-cart">
-                                    <form action="#" class="cart-quantity">
+                                    <form action="{{ route('order.store') }}" class="cart-quantity" method="POST">
+                                        @csrf
                                         <div class="quantity">
                                             <label>Quantity</label>
+                                            <input type="hidden" id="modal-product-max"
+                                                max="{{ $product->quantity }}">
+                                            <input type="hidden" name="id" value="{{ $product->id }}">
                                             <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="1" type="text">
+                                                <input class="cart-plus-minus-box" name="quantity" type="number"
+                                                    value="1">
                                                 <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                 <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                             </div>
@@ -145,8 +160,14 @@
                                     </form>
                                 </div>
                                 <div class="product-additional-info pt-25">
-                                    <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to
-                                        wishlist</a>
+                                    <form action="{{ route('wishlist.store') }}" method="post" id="myform_id">
+                                        @csrf
+                                        <input name="id" type="hidden" value="{{ $product->id }}">
+
+                                        <button type="submit" class="btn btn-outline-warning "><i
+                                                class="fa fa-heart-o"></i>
+                                            {{ __('Add to wishlist') }}</button>
+                                    </form>
                                     <div class="product-social-sharing pt-25">
                                         <ul>
                                             <li class="facebook"><a href="#"><i

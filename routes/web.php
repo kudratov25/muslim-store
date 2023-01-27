@@ -3,10 +3,12 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
@@ -28,7 +30,9 @@ Route::middleware(['throttle:global'])->group(function () {
     Route::resources([
         'comments' => CommentController::class,
         'blogs' => BlogController::class,
-        'product'=> ProductController::class
+        'product'=> ProductController::class,
+        'wishlist' => WishlistController::class,
+        'order'=>OrderController::class
     ]);
 });
 Route::get('/email/verify', function () {
@@ -58,6 +62,5 @@ Route::middleware('auth', 'password.confirm', 'verified')->group(function () {
 });
 
 Route::get('/products/{menu}/{id?}/{submenu?}', [ProductController::class, 'product'])->name('product');
-
 
 require __DIR__ . '/auth.php';

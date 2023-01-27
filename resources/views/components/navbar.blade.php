@@ -1,7 +1,7 @@
 <nav>
     <ul>
         <li><a href="{{ route('home') }}">{{ __('Home') }}</a> </li>
-        <li class="megamenu-holder"><a>{{ __('Shop') }}</a>
+        <li class="megamenu-holder"><a href="">{{ __('Shop') }}</a>
             <ul class="megamenu hb-megamenu">
                 @foreach ($navbar_menu as $menu)
                     <li>

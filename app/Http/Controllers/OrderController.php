@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Product_type_item;
-use App\Models\Wishlist;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function product($menu, $id, $submenu = null)
+    public function index()
     {
-
-        $products = Product::where('product_type_items_id', $id)->paginate(3);
-        return view('pages.product')->with([
-            'products' => $products,
-            'menu' => $menu,
-            'submenu' => $submenu
-        ]);
-        abort(404);
+        //
     }
 
     /**
@@ -45,7 +35,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //   
+        if (isset(auth()->user()->id) && $request->quantity > 0) {
+            $orders = Order::create([
+                'user_id' => auth()->user()->id,
+                'product_id' => $request->id,
+                'quantity' => $request->quantity
+            ]);
+            return redirect()->back()->with('toast_success', 'Muvaffaqiyatli qo\'shildi');
+        }
+        return redirect()->back()->with('toast_error', 'you have to login');
     }
 
     /**
@@ -54,15 +52,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Product $product)
+    public function show($id)
     {
-        return view('pages.show', [
-            'product' => $product,
-            'menu' => $request->menu,
-            'submenu' => $request->submenu
-            // 'similar_products' => product::orderBy('id', 'desc')->get()->except($product->id)->take(3),
-
-        ]);
+        //
     }
 
     /**
