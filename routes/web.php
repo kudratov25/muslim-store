@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CompareController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -30,9 +32,11 @@ Route::middleware(['throttle:global'])->group(function () {
     Route::resources([
         'comments' => CommentController::class,
         'blogs' => BlogController::class,
-        'product'=> ProductController::class,
+        'product' => ProductController::class,
         'wishlist' => WishlistController::class,
-        'order'=>OrderController::class
+        'order' => OrderController::class,
+        'compare' => CompareController::class,
+        'faq' => FaqController::class,
     ]);
 });
 Route::get('/email/verify', function () {

@@ -84,11 +84,18 @@
                                         <div class="setting ht-setting">
                                             <ul class="ht-setting-list">
                                                 @auth
-                                                    <li><a href="{{ route('dashboard') }}">My Account</a></li>
+                                                    {{-- <li><i class="fa fa-check-circle-o text-success"></i><a href="{{ route('dashboard') }}">{{('Checkout')}}</a></li> --}}
+                                                    <li><i class="fa fa-shopping-cart text-secondary"></i><a
+                                                            href="{{ route('order.index') }}">{{ 'Shopping cart' }}</a></li>
+                                                    <li><i class="fa fa-heart text-secondary"></i><a
+                                                            href="{{ route('wishlist.index') }}">{{ 'Wishlist' }}</a></li>
+                                                    <li><i class="fa fa-gear text-secondary"></i><a
+                                                            href="{{ route('dashboard') }}">{{ 'Settings' }}</a></li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <ul class="ht-setting-list">
                                                             <li>
+                                                                <i class="fa fa-sign-out text-danger"></i>
                                                                 <a href="{{ route('logout') }}"
                                                                     onclick="event.preventDefault();
                                                                 this.closest('form').submit();">Logout</a>
@@ -109,7 +116,7 @@
                                     <li>
                                         <div class="ht-currency-trigger"><span>USD $</span></div>
                                         <div class="currency ht-currency">
-                                            <ul class="ht-setting-list">
+                                            <ul class="ht-setting-list lang-setting">
                                                 <li><a href="#">EUR €</a></li>
                                                 <li class="active"><a href="#">USD $</a></li>
                                             </ul>
@@ -118,13 +125,18 @@
                                     <!-- Currency Area End Here -->
                                     <!-- Begin Language Area -->
                                     <li>
+                                        <style>
+                                            .lang-setting>li>a {
+                                                line-height: 25px;
+                                            }
+                                        </style>
                                         <div class="ht-language-trigger">
                                             <span>
                                                 {{ strtoupper(app()->getLocale()) }}
                                             </span>
                                         </div>
                                         <div class="language ht-language">
-                                            <ul class="ht-setting-list">
+                                            <ul class="ht-setting-list lang-setting">
                                                 @foreach ($all_locales as $locale)
                                                     @if ($locale == $current_locale)
                                                         <li class="active">
@@ -249,7 +261,7 @@
                                 <ul class="hm-menu">
                                     <!-- Begin Header Middle Wishlist Area -->
                                     <li class="hm-wishlist">
-                                        <a href="wishlist.html">
+                                        <a href="{{ route('wishlist.index')}}">
                                             <span class="cart-item-count wishlist-item-count">0</span>
                                             <i class="fa fa-heart-o"></i>
                                         </a>

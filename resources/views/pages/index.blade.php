@@ -108,7 +108,7 @@
                                     <!-- single-product-wrap start -->
                                     <div class="single-product-wrap">
                                         <div class="product-image">
-                                            <a href="single-product.html">
+                                            <a href="{{route('product.show', ['product'=>$product->id])}}">
                                                 <img src="images/product/large-size/2.jpg" alt="Li's Product Image">
                                             </a>
                                             <span class="sticker">New</span>

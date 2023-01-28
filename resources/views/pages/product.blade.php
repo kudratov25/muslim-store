@@ -67,7 +67,9 @@
                                     <div class="product-area shop-product-area">
                                         <div class="row">
                                             @foreach ($products as $product)
-                                                {{-- {{dd($product)}} --}}
+                                                @foreach ($product->comments as $comment)
+                                                    {{ dump($comment->rate) }}
+                                                @endforeach
                                                 <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
                                                     <!-- single-product-wrap start -->
                                                     <div class="single-product-wrap">

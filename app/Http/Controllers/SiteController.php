@@ -10,7 +10,6 @@ class SiteController extends Controller
     public function main()
     {
         $products = Product::orderBy('id', 'desc')->get()->take(10);
-
         return view('pages.index', [
             'products'=>$products
         ]);

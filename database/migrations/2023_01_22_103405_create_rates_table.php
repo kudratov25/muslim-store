@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('star');
             $table->timestamps();
         });

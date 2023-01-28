@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class CompareController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('user.order');
+        return view('user.compare');
     }
 
     /**
@@ -35,15 +34,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        if (isset(auth()->user()->id) && $request->quantity > 0) {
-            $orders = Order::create([
-                'user_id' => auth()->user()->id,
-                'product_id' => $request->id,
-                'quantity' => $request->quantity
-            ]);
-            return redirect()->back()->with('toast_success', 'Muvaffaqiyatli qo\'shildi');
-        }
-        return redirect()->back()->with('toast_error', 'you have to login');
+        //
     }
 
     /**
