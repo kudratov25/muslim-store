@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\FaqController;
@@ -36,6 +37,7 @@ Route::middleware(['throttle:global'])->group(function () {
         'wishlist' => WishlistController::class,
         'order' => OrderController::class,
         'compare' => CompareController::class,
+        'checkout' => CheckoutController::class,
         'faq' => FaqController::class,
     ]);
 });

@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
 class WishlistController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +19,8 @@ class WishlistController extends Controller
      */
     public function index()
     {
+        $wishlist = Wishlist::all();
+        $user = User::all();
         return view('user.wishlist');
     }
 
@@ -36,10 +43,10 @@ class WishlistController extends Controller
     public function store(Request $request)
     {
         if (isset(auth()->user()->id)) {
-            
+
             $wishlist = Wishlist::create([
                 'user_id' => auth()->user()->id,
-                'product_id'=> $request->id,
+                'product_id' => $request->id,
             ]);
             return redirect()->back()->with('toast_success', 'Muvaffaqiyatli qo\'shildi');
         }

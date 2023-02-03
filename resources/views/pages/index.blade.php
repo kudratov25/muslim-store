@@ -108,7 +108,7 @@
                                     <!-- single-product-wrap start -->
                                     <div class="single-product-wrap">
                                         <div class="product-image">
-                                            <a href="{{route('product.show', ['product'=>$product->id])}}">
+                                            <a href="{{ route('product.show', ['product' => $product->id]) }}">
                                                 <img src="images/product/large-size/2.jpg" alt="Li's Product Image">
                                             </a>
                                             <span class="sticker">New</span>
@@ -150,16 +150,14 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active">
+                                                    <li class="add-cart active" style="overflow: hidden">
                                                         <form action="{{ route('order.store') }}" id="add-cart"
                                                             method="POST">
                                                             @csrf
                                                             <input type="hidden" name="quantity" value="1">
                                                             <input type="hidden" name="id"
                                                                 value="{{ $product->id }}">
-                                                            <a onclick="document.getElementById('add-cart').submit();"
-                                                                class="links-details" style="cursor: pointer">Add to
-                                                                cart</a>
+                                                            <button type="submit">Add to cart</button>
                                                         </form>
                                                     </li>
                                                     <li>
@@ -168,12 +166,10 @@
                                                             @csrf
                                                             <input type="hidden" name="id"
                                                                 value="{{ $product->id }}">
-                                                            <a onclick="document.getElementById('myform_id').submit();"
-                                                                class="links-details" style="cursor: pointer"><i
-                                                                    class="fa fa-heart-o"></i></a>
+                                                            <button type="submit"><i
+                                                                    class="fa fa-heart-o"></i></button>
                                                         </form>
                                                     </li>
-                                                    {{ $product->product_type_items->name }}
                                                     <li>
                                                         <a href="" class="btnQuickView" data-toggle="modal"
                                                             data-target="#quickViewModal"

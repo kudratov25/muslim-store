@@ -2,29 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Product_type_item;
-use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CheckoutController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function product($menu, $id, $submenu = null)
+    public function index()
     {
-
-        $products = Product::where('product_type_items_id', $id)->paginate(15);
-        return view('pages.product')->with([
-            'products' => $products,
-            'menu' => $menu,
-            'submenu' => $submenu
-        ]);
-        abort(404);
+        return view('user.checkout');
     }
 
     /**
@@ -34,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // return 'this is create action';
     }
 
     /**
@@ -54,15 +47,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Product $product)
+    public function show($id)
     {
-        return view('pages.show', [
-            'product' => $product,
-            'menu' => $request->menu,
-            'submenu' => $request->submenu
-            // 'similar_products' => product::orderBy('id', 'desc')->get()->except($product->id)->take(3),
-
-        ]);
+        //
     }
 
     /**

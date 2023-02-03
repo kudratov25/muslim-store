@@ -34,10 +34,10 @@
                 <li>
                     <h5 class="text-secondary">Other Pages</h5>
                     <ul>
-                        <li><a href="{{ route('order.index')}}">Shopping Cart</a></li>
-                        <li><a href="{{ route('wishlist.index')}}">Wishlist</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="{{ route('compare.index')}}">Compare</a></li>
+                        <li><a href="{{ route('checkout.index')}}">{{__('Checkout')}}</a></li>
+                        <li><a href="{{ route('order.index')}}">{{__('Shopping Cart')}}</a></li>
+                        <li><a href="{{ route('wishlist.index')}}">{{__('Wishlist')}}</a></li>
+                        <li><a href="{{ route('compare.index')}}">{{__('Compare')}}</a></li>
                     </ul>
                 <li>
                     <h5 class="text-secondary">Other Pages</h5>

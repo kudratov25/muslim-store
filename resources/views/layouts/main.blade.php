@@ -85,12 +85,18 @@
                                             <ul class="ht-setting-list">
                                                 @auth
                                                     {{-- <li><i class="fa fa-check-circle-o text-success"></i><a href="{{ route('dashboard') }}">{{('Checkout')}}</a></li> --}}
+                                                    <li><i class="fa fa-truck text-secondary"
+                                                            style="transform: rotate(90deg);
+                                                        transform: scaleX(-1);"></i><a
+                                                            href="{{ route('checkout.index') }}">{{ 'Checkout' }}</a>
+                                                    </li>
                                                     <li><i class="fa fa-shopping-cart text-secondary"></i><a
                                                             href="{{ route('order.index') }}">{{ 'Shopping cart' }}</a></li>
                                                     <li><i class="fa fa-heart text-secondary"></i><a
-                                                            href="{{ route('wishlist.index') }}">{{ 'Wishlist' }}</a></li>
+                                                            href="{{ route('wishlist.index') }}">{{ 'Wishlist' }}</a>
+                                                    </li>
                                                     <li><i class="fa fa-gear text-secondary"></i><a
-                                                            href="{{ route('dashboard') }}">{{ 'Settings' }}</a></li>
+                                                            href="{{ route('profile.edit') }}">{{ 'Settings' }}</a></li>
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <ul class="ht-setting-list">
@@ -261,8 +267,14 @@
                                 <ul class="hm-menu">
                                     <!-- Begin Header Middle Wishlist Area -->
                                     <li class="hm-wishlist">
-                                        <a href="{{ route('wishlist.index')}}">
-                                            <span class="cart-item-count wishlist-item-count">0</span>
+                                        <a href="{{ route('wishlist.index') }}">
+                                            <span class="cart-item-count wishlist-item-count">
+                                                @auth
+                                                    {{ $wishlist->count() }}
+                                                @else
+                                                    <span class="cart-item-count">0</span>
+                                                @endauth
+                                            </span>
                                             <i class="fa fa-heart-o"></i>
                                         </a>
                                     </li>
@@ -274,8 +286,7 @@
                                             <span class="item-icon"></span>
                                             <span class="item-text">Show cart
                                                 @auth
-                                                    <span
-                                                        class="cart-item-count">{{ auth()->user()->notifications->count() }}</span>
+                                                    <span class="cart-item-count">{{ $orders_count }}</span>
                                                 @else
                                                     <span class="cart-item-count">0</span>
                                                 @endauth
@@ -286,21 +297,29 @@
                                         @auth
                                             <div class="minicart">
                                                 <ul class="minicart-product-list">
-                                                    @foreach (auth()->user()->notifications as $notification)
+                                                    @foreach ($orders as $order)
+                                                        {{-- {{ var_dump($order->product->{'name_' . app()->getLocale()}) }} --}}
                                                         <li>
-                                                            <a href="single-product.html" class="minicart-product-image">
-                                                                <img src="{{ asset('storage/' . $notification->data['image']) }}"
-                                                                    alt="cart products">
+                                                            <a href="{{ route('order.index') }}"
+                                                                class="minicart-product-image">
+                                                                <img src="{{ asset('storage/' . $order->photo) }}"
+                                                                    alt="{{ $order->product->{'name_' . app()->getLocale()} }}">
                                                             </a>
                                                             <div class="minicart-product-details">
                                                                 <h6><a
-                                                                        href="{{ 'blogs' }}">{{ $notification->data['title'] }}</a>
+                                                                        href="{{ route('order.index') }}">{{ $order->product->{'name_' . app()->getLocale()} }}</a>
                                                                 </h6>
-                                                                <span>£40 x 1</span>
+                                                                <span>{{ ' $ ' . $order->product->price . ' × ' . $order->quantity }}</span>
                                                             </div>
-                                                            <button class="close">
-                                                                <i class="fa fa-close"></i>
-                                                            </button>
+                                                            <form
+                                                                action="{{ route('order.destroy', ['order' => $order->id]) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button class="close">
+                                                                    <i class="fa fa-close"></i>
+                                                                </button>
+                                                            </form>
                                                         </li>
                                                     @endforeach
                                                 </ul>

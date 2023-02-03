@@ -36,7 +36,7 @@ class BlogController extends Controller
         $blogs = Blog::orderBy('id', 'desc')->paginate(6);
 
         // $blogs = Blog::latest()->paginate(4);
-       
+
         // $blogs = DB::table('blogs')->orderBy('id', 'desc')->paginate(8);=============this way u cannt use reletionship in model class
         return view('blogs.index', [
             'blogs' => $blogs,
@@ -102,7 +102,7 @@ class BlogController extends Controller
         return view('blogs.show', [
             'blog' => $blog,
             'similar_products' => Blog::orderBy('id', 'desc')->get()->except($blog->id)->take(3),
-            
+
         ]);
     }
 

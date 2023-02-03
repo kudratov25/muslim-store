@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('user.order');
+        $user_id = Auth()->user()->id;
+        $orders = Order::where('user_id', $user_id)->orderBy('id', 'desc')->paginate(10);
+        return view('user.order', ['orders' => $orders]);
     }
 
     /**
@@ -86,8 +93,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        // $order = Order::find($order);
+        $order->delete();
+        return redirect()->route('order.index')->with('toast_error', 'Deleted');
     }
 }

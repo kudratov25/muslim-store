@@ -10,7 +10,7 @@
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
                         <div class="login-form">
-                            <h4 class="login-title">{{__('Forgot your password?')}}</h4>
+                            <h4 class="login-title">{{ __('Forgot your password?') }}</h4>
                             <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
                                 {{ __('No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
                             </div>
@@ -19,8 +19,12 @@
                                     <x-input-label for="email" :value="__('Email')" />
                                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
                                         :value="old('email')" required autofocus />
-                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
                                 </div>
+                                @if (session('success'))
+
+                                <p class="col-md-12" style="color: #0eb11c">{{ __('We have send to reset email. Please check your inbox!') }}</p>
+                                @endif
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-outline-warning mt-0">
                                         {{ __('Email Password Reset Link') }}</button>

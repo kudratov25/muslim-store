@@ -20,7 +20,7 @@
                         <x-input-label for="password" :value="__('Password')" />
                         <x-text-input id="password" class="block mt-1 w-full py-2" type="password" name="password"
                             required autocomplete="current-password" />
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2 text-danger" />
                         <div class="mt-4">
                             <button type="submit" class="register-button mt-0">
                                 {{ __('Confirm') }}
