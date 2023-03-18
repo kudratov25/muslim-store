@@ -31,15 +31,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         Paginator::useBootstrapFour();
         Schema::defaultStringLength(191);
         View::composer('layouts.main', function ($view) {
-            $view->with('current_locale', App::currentLocale());
-            $view->with('all_locales', config('app.all_locales'));
-            $view->with('wishlist', Wishlist::where('user_id', Auth()->user()->id));
-            $view->with('orders', Order::where('user_id', Auth()->user()->id)->limit(5)->get());
-            $view->with('orders_count', Order::where('user_id', Auth()->user()->id)->count());
+            if (Auth::guest()) {
+                $view->with('current_locale', App::currentLocale())
+                    ->with('all_locales', config('app.all_locales'));
+            }
+            if (!Auth::guest()) {
+                $view->with('current_locale', App::currentLocale())
+                    ->with('all_locales', config('app.all_locales'))
+                    ->with('wishlist', Wishlist::where('user_id', Auth()->user()->id))
+                    ->with('orders', Order::where('user_id', Auth()->user()->id)->limit(5)->get())
+                    ->with('orders_count', Order::where('user_id', Auth()->user()->id)->count());
+            }
         });
     }
 }

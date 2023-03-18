@@ -323,19 +323,16 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
-                                                <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
+                                                <p class="minicart-total">{{__('SUBTOTAL:')}} <span>£80.00</span></p>
                                                 <div class="minicart-button">
-                                                    <a href="checkout.html"
+                                                    <a href="{{ route('order.index')}}"
                                                         class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                        <span>View Full Cart</span>
-                                                    </a>
-                                                    <a href="checkout.html"
-                                                        class="li-button li-button-fullwidth li-button-sm">
-                                                        <span>Checkout</span>
+                                                        <span>{{__('View Full Cart')}}</span>
                                                     </a>
                                                 </div>
                                             </div>
                                         @endauth
+
                                     </li>
                                     <!-- Header Mini Cart Area End Here -->
                                 </ul>

@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-      product::factory(8)->create();
+      Product::factory(8)->create();
       Product::create([
         'admin_id'=>1,
         'product_type_items_id'=>rand(1,5),
