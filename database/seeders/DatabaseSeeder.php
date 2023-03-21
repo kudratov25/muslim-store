@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
             Product_typeSeeder::class,
             Product_type_itemSeeder::class,
+            RoleSeeder::class,
             AdminSeeder::class,
             ColorSeeder::class,
             RateSeeder::class,

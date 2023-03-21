@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
@@ -25,6 +26,11 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('administrator', [AdminController::class, 'administrator'])->name('administrator');
+Route::post('authenticate', [AdminController::class, 'authenticate'])->name('authenticate');
+Route::post('logout', [AdminController::class, 'logout'])->name('logout');
+Route::get('admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard')->middleware('admin');
 
 Route::middleware(['throttle:global'])->group(function () {
     Route::get('/', [SiteController::class, 'main'])->name('home');

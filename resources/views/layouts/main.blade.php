@@ -144,7 +144,7 @@
                                         <div class="language ht-language">
                                             <ul class="ht-setting-list lang-setting">
                                                 @foreach ($all_locales as $locale)
-                                                    @if ($locale == $current_locale)
+                                                    @if ($locale == App::currentLocale())
                                                         <li class="active">
                                                             <a>{{ strtoupper($locale) }}</a>
                                                         </li>
@@ -268,13 +268,15 @@
                                     <!-- Begin Header Middle Wishlist Area -->
                                     <li class="hm-wishlist">
                                         <a href="{{ route('wishlist.index') }}">
-                                            <span class="cart-item-count wishlist-item-count">
-                                                @auth
+                                            @auth
+                                                <span class="cart-item-count">
                                                     {{ $wishlist->count() }}
-                                                @else
-                                                    <span class="cart-item-count">0</span>
-                                                @endauth
-                                            </span>
+                                                </span>
+                                            @else
+                                                <span class="cart-item-count wishlist-item-count">
+                                                    0
+                                                </span>
+                                            @endauth
                                             <i class="fa fa-heart-o"></i>
                                         </a>
                                     </li>
@@ -323,11 +325,11 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
-                                                <p class="minicart-total">{{__('SUBTOTAL:')}} <span>£80.00</span></p>
+                                                <p class="minicart-total">{{ __('SUBTOTAL:') }} <span>£80.00</span></p>
                                                 <div class="minicart-button">
-                                                    <a href="{{ route('order.index')}}"
+                                                    <a href="{{ route('order.index') }}"
                                                         class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                        <span>{{__('View Full Cart')}}</span>
+                                                        <span>{{ __('View Full Cart') }}</span>
                                                     </a>
                                                 </div>
                                             </div>

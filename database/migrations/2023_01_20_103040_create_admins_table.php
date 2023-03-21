@@ -15,7 +15,18 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_id')->default(1)->constrained();
+            $table->string('email')->unique();
             $table->string('name');
+            $table->string('surname');
+            $table->string('password');
+            $table->string('photo')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('address')->nullable();
+            $table->string('pass_number')->nullable();
+            $table->string('pass_photo')->nullable();
+            $table->rememberToken();
+            $table->string('status')->default('0');
             $table->timestamps();
         });
     }

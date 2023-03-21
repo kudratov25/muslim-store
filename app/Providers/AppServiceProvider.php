@@ -35,8 +35,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         View::composer('layouts.main', function ($view) {
             if (Auth::guest()) {
-                $view->with('current_locale', App::currentLocale())
-                    ->with('all_locales', config('app.all_locales'));
+                $view->with('all_locales', config('app.all_locales'));
             }
             if (!Auth::guest()) {
                 $view->with('current_locale', App::currentLocale())
