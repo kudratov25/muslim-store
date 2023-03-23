@@ -2,23 +2,23 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b></a>
+            <a href="{{ route('admin/login') }}"><b>Admin</b> Dashboard</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-            <form action="{{ route('authenticate') }}" method="post">
+            <form action="{{ route('admin/authenticate') }}" method="post">
                 @csrf
-                <div class="form-group has-feedback">
-                    <input name="email" type="email" class="form-control" placeholder="Email">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
-                </div>
                 <div class="form-group has-feedback">
                     <input name="name" type="text" class="form-control" placeholder="Name">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     <x-input-error :messages="$errors->get('name')" class="mt-2 text-danger" />
+                </div>
+                <div class="form-group has-feedback">
+                    <input name="email" type="email" class="form-control" placeholder="Email">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
                 </div>
                 <div class="form-group has-feedback">
                     <input name="password" type="password" class="form-control" placeholder="Password">

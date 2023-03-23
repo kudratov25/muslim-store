@@ -21,7 +21,7 @@ class AdminAccess
             return $next($request);
         } else {
             Auth::logout();
-            return redirect('administrator')->with('toast_warning', 'You don`t have access');
+            return redirect()->route('home')->with('warning', 'You don\'t have access');
         }
         return $next($request);
     }

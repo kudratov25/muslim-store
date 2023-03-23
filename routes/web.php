@@ -27,10 +27,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('administrator', [AdminController::class, 'administrator'])->name('administrator');
-Route::post('authenticate', [AdminController::class, 'authenticate'])->name('authenticate');
-Route::post('logout', [AdminController::class, 'logout'])->name('logout');
-Route::get('admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard')->middleware('admin');
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminController::class, 'login'])->name('admin/login');
+    Route::post('/authenticate', [AdminController::class, 'authenticate'])->name('admin/authenticate');
+    Route::post('/logout', [AdminController::class, 'logout'])->name('admin/logout');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin/dashboard')->middleware('admin');
+});
 
 Route::middleware(['throttle:global'])->group(function () {
     Route::get('/', [SiteController::class, 'main'])->name('home');
@@ -47,21 +49,22 @@ Route::middleware(['throttle:global'])->group(function () {
         'faq' => FaqController::class,
     ]);
 });
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+// Route::get('/email/verify', function () {
+//     return view('auth.verify-email');
+// })->middleware('auth')->name('verification.notice');
 
-    return redirect('/home');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
+
+//     return redirect('/home');
+// })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 Route::get('language/{locale}', [LangController::class, 'change_locale'])->name('locale.change');
 Route::get('/dashboard', function () {
     return view('dashboard');

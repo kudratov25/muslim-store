@@ -8,11 +8,11 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    public function administrator()
+    public function login()
     {
         return view('admin.login');
     }
-    public function admindashboard()
+    public function dashboard()
     {
         return view('admin.admin');
     }
@@ -29,31 +29,23 @@ class AdminController extends Controller
             'name' => ['required', 'max:25'],
             'password' => ['required', 'max:30', 'min:8'],
         ]);
-        $remember = $request->remember_token;
-        if (Auth::attempt($credentials, $remember)) {
-            $request->session()->regenerateToken();
 
-            return redirect()->intended('admindashboard');
+        // dd($request);
+        $remember = $request->remember_token;
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $request->session()->regenerateToken();
+            return redirect()->intended('admin/dashboard');
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
-
-
-
-    // umumiy logout bu yerda ishlaganligi uchun quidagi logout shart emas, agar qo'shimcha method qo'shilsa kommentdan chiqarish va route logout name o'zgartiriladiащкьфвфпш фсешщт кщгеу ham o'zgartiriladi
-
-    // public function logout(Request $request)
-    // {
-    //     Auth::logout();
-
-    //     $request->session()->invalidate();
-
-    //     $request->session()->regenerateToken();
-
-    //     return redirect('/');
-    // }
-
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/admin/login')->with('toast_warning', 'You have logout');
+    }
 }
