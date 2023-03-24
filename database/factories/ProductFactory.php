@@ -31,7 +31,7 @@ class ProductFactory extends Factory
             'text_en' => fake()->paragraphs($nb = 3, $asText = true),
             'text_uz' => fake()->paragraphs($nb = 3, $asText = true),
             'text_ru' => fake()->paragraphs($nb = 3, $asText = true),
-            'image' => 'image.png',
+            'image' => 'image.jpg',
             'quantity' => rand(10, 150),
             'price' => rand(150, 350),
             'size' => rand(64, 256)

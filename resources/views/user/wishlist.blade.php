@@ -5,7 +5,7 @@
         }
     </style>
     <x-nav-status>
-       {{ __('Wishlist')}}
+        {{ __('Wishlist') }}
     </x-nav-status>
     <!--Wishlist Area Strat-->
     <div class="wishlist-area pt-60 pb-60">

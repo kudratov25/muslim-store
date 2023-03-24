@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'email' => 'john@mail.ru',
             'password' => Hash::make('password'),
             'photo' => 'avatar.jpg',
-            'email_verified_at' => null,
+            'email_verified_at' => now()
         ]);
     }
 }

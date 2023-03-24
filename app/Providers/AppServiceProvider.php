@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             if (!Auth::guest()) {
                 $view->with('current_locale', App::currentLocale())
                     ->with('all_locales', config('app.all_locales'))
-                    ->with('wishlist', Wishlist::where('user_id', Auth()->user()->id))
+                    ->with('wishlist_count', Wishlist::where('user_id', Auth()->user()->id)->count())
                     ->with('orders', Order::where('user_id', Auth()->user()->id)->limit(5)->get())
                     ->with('orders_count', Order::where('user_id', Auth()->user()->id)->count());
             }
